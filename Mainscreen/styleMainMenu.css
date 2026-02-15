@@ -1,0 +1,43 @@
+
+
+.pkm-menu-outer{
+    border: 2px solid #000000; /* este va a ser la linea delgada de afuera */
+    background-color: #FFFFFF; /* esto de aqui sirve para mostrar el fondo del menú y su color */
+    padding: 2px; /* este es el espacio en blanco que es entre las lineas del cuadro */
+    display: inline-block; /* esto hace que  se ajuste al contenido */
+}
+    .pkm-menu-inner{
+    border: 4px solid #000000; /* este va a ser la linea delgada de adentro */
+    padding: 15px; /* este no se por que me estiro gemini, seguro es el cuadro completo*/
+    background-color: #FFFFFF; /* esto de aqui sirve para mostrar el fondo del menú y su color */
+    font-family: 'Courier New', Courier, monospace; /* este es el estilo de letra*/
+    font-weight: bold;
+    text-transform: uppercase; /* Pokémon siempre usa mayúsculas */
+    min-width: 300px;          /* Para que no se vea muy pequeño */
+}
+
+    /* esta seccoion de aqui es meramente ia */
+
+.pkm-menu-inner h2 {
+    position: relative;       /* Necesario para posicionar el triángulo */
+    cursor: pointer;          /* Cambia el mouse a una mano */
+    padding-left: 30px;       /* Espacio para que el triángulo no pise las letras */
+    transition: 0.2s;         /* Suaviza un poco la aparición */
+    font-family: 'Courier New', monospace; /* O tu fuente de Pokémon */
+}
+
+.pkm-menu-inner h2::before {
+    content: "▶";             /* El símbolo que quieres */
+    position: absolute;
+    left: 0;                  /* Lo pega a la izquierda del h2 */
+    opacity: 0;               /* Lo hace invisible */
+    transition: opacity 0.1s; /* Animación rápida de aparición */
+}
+
+.pkm-menu-inner h2:hover::before {
+    opacity: 1;               /* ¡Aparece el triángulo! */
+}
+
+.pkm-menu-inner h2:hover {
+    color: #000;              /* Asegura que sea negro sólido */
+}
