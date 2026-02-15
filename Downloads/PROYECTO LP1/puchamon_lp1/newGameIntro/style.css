@@ -1,0 +1,66 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: monospace;
+}
+
+#game {
+    width: 600px;
+    height: 400px;
+    background-color: #111; /* mismo tono oscuro uniforme */
+    position: relative;
+    border: 6px solid white;
+    overflow: hidden;
+}
+
+/* SPRITES */
+
+#oak-sprite,
+#rival-sprite {
+    position: absolute;
+    width: 200px;
+    transform: translateX(-50%);
+    image-rendering: pixelated;
+}
+
+/* Oak izquierda */
+#oak-sprite {
+    left: 30%;
+    bottom: 140px;
+}
+
+/* Rival derecha */
+#rival-sprite {
+    left: 70%;
+    bottom: 160px;
+    display: none;
+}
+
+/* CAJA DE TEXTO MÁS GRANDE */
+
+#text-box {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    height: 150px; /* antes 110px → ahora más espacio */
+    background-color: antiquewhite;
+    color: black;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 4px solid black;
+    border-radius: 8px;
+}
+
+/* TEXTO */
+
+#text {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6; /* más separación entre líneas */
+    white-space: pre-line;
+}
