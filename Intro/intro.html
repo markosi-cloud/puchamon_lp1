@@ -1,11 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puchamon Intro</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Puchamon Rojo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      margin:0;
+      height:100vh;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      image-rendering:pixelated;
+      font-family: 'VT323', monospace;
+    }
+
+    .gameboy-screen {
+      width:640px;
+      height:576px;
+      background:#9ca0a4;
+      border:20px solid #222;
+      border-radius:16px;
+      box-shadow:0 0 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .screen-inner {
+      width:160px;
+      height:144px;
+      position:absolute;
+      inset:0;
+      margin:auto;
+      background:#ffffff;
+      transform:scale(4);
+      transform-origin:center center;
+      image-rendering:pixelated;
+      overflow: hidden;
+    }
+
+    .title-logo {
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: auto;
+      image-rendering: pixelated;
+    }
+
+    .trainer {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      top: 75px;
+      left: 62%;               
+      transform: translateX(-50%);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: grayscale(100%) brightness(0.85) contrast(1.7);
+      opacity: 0.95;
+      image-rendering: pixelated;
+    }
+
+    .pokemon-container {
+      position: absolute;
+      top: 75px;
+      left: 55%;            
+      width: 48px;
+      height: 48px;
+      transform: translateX(-120%); 
+         filter: grayscale(100%) brightness(1.20) contrast(1.7);
+    }
+
+    .pokemon {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: grayscale(100%) brightness(0.65) contrast(1.7);
+      image-rendering: pixelated;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .pokemon.slide-in {
+      animation: slideIn 0.6s forwards ease-out;
+    }
+
+    .pokemon.slide-out {
+      animation: slideOut 0.6s forwards ease-in;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(60px); }   
+      to   { transform: translateX(0); }
+    }
+
+    @keyframes slideOut {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-80px); }  
+    }
+
+    .press-start {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'VT323', monospace;
+      font-size: 13px;
+      color: #000;
+      text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+      animation: blink 1.4s infinite step-end;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
 </head>
-<body>
-    Aqui va el intro
+<body tabindex="0">
+
+<div class="gameboy-screen">
+  <div class="screen-inner">
+
+    <img class="title-logo" src="https://cdn2.steamgriddb.com/logo_thumb/1c7887b94374bef3f6d41cd6fce98312.png" alt="Pokémon Rojo Logo">
+
+    <div class="trainer" style="background-image: url('https://archives.bulbagarden.net/media/upload/4/4c/Spr_RB_Red_2.png');"></div>
+
+    <div class="pokemon-container" id="pokemonContainer">
+      <div class="pokemon" id="pokemonSprite"></div>
+    </div>
+
+    <div class="press-start">PRESS START</div>
+
+  </div>
+</div>
+
+<audio id="titleMusic" loop preload="auto" autoplay>
+  <source src="https://archive.org/download/pkmn-rgby-soundtrack/Disc%201/02%20-%20Title%20Screen.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const pokemonSprites = [
+  'https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/charmander.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/squirtle.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/weedle.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/pidgeotto.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/pikachu.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/nidoran-m.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/clefairy.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/abra.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/ponyta.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/gastly.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/onix.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/rhydon.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/scyther.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/magikarp.png',
+  'https://img.pokemondb.net/sprites/red-blue/normal/ditto.png'
+];
+
+let index = 0;
+const container = document.getElementById('pokemonContainer');
+const pokeEl = document.getElementById('pokemonSprite');
+
+function loadAndAnimate() {
+  container.style.transform = 'translateX(-120%)';
+  pokeEl.classList.remove('slide-in', 'slide-out');
+
+  pokeEl.style.backgroundImage = `url(${pokemonSprites[index]})`;
+
+  setTimeout(() => {
+    pokeEl.classList.add('slide-in');
+  }, 100);
+
+  setTimeout(() => {
+    pokeEl.classList.remove('slide-in');
+    pokeEl.classList.add('slide-out');
+
+    setTimeout(() => {
+      index = (index + 1) % pokemonSprites.length;
+      loadAndAnimate();
+    }, 600);
+  }, 5600);
+}
+
+loadAndAnimate();
+
+const music = document.getElementById('titleMusic');
+music.volume = 0.5;
+music.play().catch(() => {
+  const resume = () => {
+    music.play();
+    document.removeEventListener('click', resume);
+    document.removeEventListener('keydown', resume);
+  };
+  document.addEventListener('click', resume);
+  document.addEventListener('keydown', resume);
+});
+
+document.body.focus();
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    setTimeout(() => {
+      window.location.href = 'Mainscreen\principalMenu.html';
+    }, 300);
+  }
+});
+</script>
+
 </body>
 </html>
