@@ -54,6 +54,7 @@
       width: 110px;
       height: auto;
       image-rendering: pixelated;
+      filter: grayscale(50%)
     }
 
     .trainer {
@@ -216,7 +217,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' || e.key === ' ') {
     e.preventDefault();
     setTimeout(() => {
-      window.location.href = 'Mainscreen\principalMenu.html';
+      window.location.href = '../Mainscreen/principalMenu.html';
     }, 300);
   }
 });
