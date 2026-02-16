@@ -2,13 +2,58 @@
 <head>
     <title>Puchamon</title>
     <link rel="stylesheet" href="styleMainMenu.css">
+    <style>
+        body {
+      margin:0;
+      height:100vh;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      image-rendering:pixelated;
+      font-family: 'VT323', monospace;
+    }
+
+    .gameboy-screen {
+      width:640px;
+      height:576px;
+      background:#ffffff;
+      border:20px solid #222;
+      border-radius:16px;
+      box-shadow:0 0 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+    </style>
 </head>
 <body>
+<div class="gameboy-screen">
+  <div class="screen-inner">
     <div class="pkm-menu-outer">
         <div class="pkm-menu-inner">
             <h2 id = "newgame">NUEVO JUEGO</h2>
             <h2 id = "options">OPCIONES</h2>
+                    </div>
+            </div>
         </div>
     </div>
+    <audio id="titleMusic" loop preload="auto" autoplay>
+  <source src="https://archive.org/download/pkmn-rgby-soundtrack/Disc%201/02%20-%20Title%20Screen.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById('titleMusic');
+music.volume = 0.7;
+music.play().catch(() => {
+  const resume = () => {
+    music.play();
+    document.removeEventListener('click', resume);
+    document.removeEventListener('keydown', resume);
+  };
+  document.addEventListener('click', resume);
+  document.addEventListener('keydown', resume);
+});
+</script>
     <script src="apps.js"></script>
 </html>
