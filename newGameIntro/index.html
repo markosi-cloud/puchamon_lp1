@@ -14,6 +14,25 @@
             <p id="text"></p>
         </div>
     </div>
+
+    <audio id="titleMusic" loop preload="auto" autoplay>
+  <source src="https://dn721608.ca.archive.org/0/items/pkmn-rgby-soundtrack/Disc%201/31%20-%20Route%2024.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById('titleMusic');
+music.volume = 0.7;
+music.play().catch(() => {
+  const resume = () => {
+    music.play();
+    document.removeEventListener('click', resume);
+    document.removeEventListener('keydown', resume);
+  };
+  document.addEventListener('click', resume);
+  document.addEventListener('keydown', resume);
+});
+</script>
+
     <script src="script.js"></script>
 </body>
 </html>
