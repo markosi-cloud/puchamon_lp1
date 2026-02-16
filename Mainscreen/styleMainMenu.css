@@ -41,3 +41,25 @@
 .pkm-menu-inner h2:hover {
     color: #000;              /* Asegura que sea negro sólido */
 }
+  body {
+      margin:0;
+      height:100vh;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      image-rendering:pixelated;
+      font-family: 'VT323', monospace;
+    }
+
+    .gameboy-screen {
+      width:640px;
+      height:576px;
+      background:#ffffff;
+      border:20px solid #222;
+      border-radius:16px;
+      box-shadow:0 0 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.6);
+      position:relative;
+      overflow:hidden;
+    }
