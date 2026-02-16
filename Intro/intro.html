@@ -153,6 +153,8 @@
   <source src="https://archive.org/download/pkmn-rgby-soundtrack/Disc%201/02%20-%20Title%20Screen.mp3" type="audio/mpeg">
 </audio>
 
+
+
 <script>
 const pokemonSprites = [
   'https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png',
@@ -201,7 +203,7 @@ function loadAndAnimate() {
 loadAndAnimate();
 
 const music = document.getElementById('titleMusic');
-music.volume = 0.5;
+music.volume = 0.7;
 music.play().catch(() => {
   const resume = () => {
     music.play();

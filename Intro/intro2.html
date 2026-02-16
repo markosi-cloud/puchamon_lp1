@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puchamon Rojito</title>
+     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      margin:0;
+      height:100vh;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      image-rendering:pixelated;
+      font-family: 'VT323', monospace;
+    }
+
+    .gameboy-screen {
+      width:640px;
+      height:576px;
+      background:#9ca0a4;
+      border:20px solid #222;
+      border-radius:16px;
+      box-shadow:0 0 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .screen-inner {
+      width:160px;
+      height:144px;
+      position:absolute;
+      inset:0;
+      margin:auto;
+      background:#ffffff;
+      transform:scale(4);
+      transform-origin:center center;
+      image-rendering:pixelated;
+      overflow: hidden;
+    }
+
+
+
+    .press-start {
+      position:absolute;
+      bottom: 100px;
+      left: 0;
+      right: 0;
+      text-align: center ;
+      font-family: 'VT323', monospace;
+      font-size: 13px;
+      color: #000;
+      text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    }
+
+  </style>
+</head>
+<body>
+    <div class="gameboy-screen">
+  <div class="screen-inner">
+
+
+    <div class="press-start">PRESS START</div>
+
+  </div>
+</div>
+
+</body>
+</html>
