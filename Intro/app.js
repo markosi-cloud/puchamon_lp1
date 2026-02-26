@@ -1,21 +1,21 @@
 
 const pokemonSprites = [
-  'https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/charmander.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/squirtle.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/weedle.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/pidgeotto.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/pikachu.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/nidoran-m.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/clefairy.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/abra.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/ponyta.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/gastly.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/onix.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/rhydon.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/scyther.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/magikarp.png',
-  'https://img.pokemondb.net/sprites/red-blue/normal/ditto.png'
+  'assets/images/bulbasaur.png',
+  'assets/images/charmander.png',
+  'assets/images/squirtle.png',
+  'assets/images/weedle.png',
+  'assets/images/pidgeotto.png',
+  'assets/images/pikachu.png',
+  'assets/images/nidoran-m.png',
+  'assets/images/clefairy.png',
+  'assets/images/abra.png',
+  'assets/images/ponyta.png',
+  'assets/images/gastly.png',
+  'assets/images/onix.png',
+  'assets/images/rhydon.png',
+  'assets/images/scyther.png',
+  'assets/images/magikarp.png',
+  'assets/images/ditto.png'
 ];
 
 let index = 0;

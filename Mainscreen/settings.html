@@ -4,22 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+    <link rel="stylesheet" href="styleSettings.css">
+
 </head>
 <body>
-    <h2>TEXT SPEED</h2>
-    <h3> fast</h3>
-    <h3>medum</h3>
-    <h3>SLOW</h3>
+    <div class="gameboy-screen">
+        <div class="screen-inner">
+            <div class="settings-container">
+                <!-- TEXT SPEED -->
+                <div class="settings-box pkm-menu-outer">
+                    <div class="pkm-menu-inner">
+                        <div class="box-title" data-section="speed">
+                              TEXT SPEED
+                        </div>
+                        <div class="options-row">
+                            <div class="option-item" data-option="fast">
+                                <div class="option-triangle"></div>
+                                FAST
+                            </div>
+                            <div class="option-item" data-option="medium">
+                                <div class="option-triangle"></div>
+                                MEDIUM
+                            </div>
+                            <div class="option-item" data-option="slow">
+                                <div class="option-triangle"></div>
+                                SLOW
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <h2>BATTLE ANIMATION</h2>
-    <h3>on</h3>
-    <h3>off</h3>
+                <!-- BATTLE ANIMATION -->
+                <div class="settings-box pkm-menu-outer">
+                    <div class="pkm-menu-inner">
+                        <div class="box-title" data-section="animation">
+                            BATTLE ANIMATION
+                        </div>
+                        <div class="options-row">
+                            <div class="option-item" data-option="on">
+                                <div class="option-triangle"></div>
+                                ON
+                            </div>
+                            <div class="option-item" data-option="off">
+                                <div class="option-triangle"></div>
+                                OFF
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <h2>BATTLE STYLE</h2>
-    <h3>shift</h3>
-    <h3>set</h3>
+                <!-- BATTLE STYLE -->
+                <div class="settings-box pkm-menu-outer">
+                    <div class="pkm-menu-inner">
+                        <div class="box-title" data-section="style">
+                            BATTLE STYLE
+                        </div>
+                        <div class="options-row">
+                            <div class="option-item" data-option="shift">
+                                <div class="option-triangle"></div>
+                                SHIFT
+                            </div>
+                            <div class="option-item" data-option="set">
+                                <div class="option-triangle"></div>
+                                SET
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <h1 id = "cancel">cancel</h1>
-    <script src="apps.js"></script>
+                <!-- CANCEL -->
+                <div id="cancel-btn">
+                    <div class="cancel-triangle"></div>
+                    CANCEL
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <audio id="titleMusic" loop preload="auto" autoplay>
+        <source src="https://archive.org/download/pkmn-rgby-soundtrack/Disc%201/02%20-%20Title%20Screen.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('titleMusic');
+        const saved = sessionStorage.getItem('bgmTime');
+        if (saved !== null) {
+            music.currentTime = parseFloat(saved) || 0;
+        }
+        music.volume = 0.7;
+        music.play().catch(() => {
+            const resumeAudio = () => {
+                music.play();
+                document.removeEventListener('click', resumeAudio);
+                document.removeEventListener('keydown', resumeAudio);
+            };
+            document.addEventListener('click', resumeAudio);
+            document.addEventListener('keydown', resumeAudio);
+        });
+        setInterval(() => {
+            sessionStorage.setItem('bgmTime', music.currentTime);
+        }, 3000);
+    </script>
+
+    <script src="appsSettings.js"></script>
+
 </body>
 </html>

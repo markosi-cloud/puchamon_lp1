@@ -1,0 +1,229 @@
+/* === ESTILOS BASE === */
+/* Se aplica a todos los elementos para quitar márgenes y rellenos
+   que los navegadores ponen por defecto, y usar el "box-sizing"
+   de forma que el ancho/alto incluya el borde. Básico en casi todo CSS. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* El <body> ocupa toda la pantalla y centra su contenido en flexbox. */
+body {
+    margin: 0;
+    height: 100vh;            /* 100% de la altura de la ventana */
+    background: #000;        /* fondo negro (como la carcasa GameBoy) */
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente */
+    overflow: hidden;        /* evita scroll si algo sobresale */
+    image-rendering: pixelated; /* hace que imágenes se vean pixeladas */
+    font-family: 'VT323', 'Courier New', monospace;
+}
+
+/* === PANTALLA GAMEBOY === */
+/* El marco blanco con borde gris que simula la pantalla de la consola */
+.gameboy-screen {
+    width: 640px;
+    height: 576px;
+    background: #ffffff;
+    border: 20px solid #222;
+    border-radius: 16px;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.9),
+                inset 0 0 30px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* pequeños desplazamientos como en el menú principal */
+    top: 5px;
+    left: 5px;
+}
+
+/* contenedor interno opcional para dar padding a los cuadros */
+.screen-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px;          /* espacio interno alrededor de los cuadros */
+}
+
+/* === DOBLE CONTORNO POKÉMON === */
+/* Usamos dos elementos encajados para crear el efecto de líneas
+   doble que se ve en los menús de los juegos clásicos. */
+.pkm-menu-outer {
+    border: 2px solid #000000; /* línea fina exterior */
+    background-color: #FFFFFF; /* blanco entre líneas */
+    padding: 2px;              /* espacio entre borde exterior e interior */
+    display: inline-block;     /* se ajusta al contenido interior */
+    box-sizing: border-box;
+    margin-top: 8px;           /* separa del borde de la pantalla */
+    margin-left: 8px;          /* mantiene posición similar a principalMenu */
+}
+
+.pkm-menu-inner {
+    border: 4px solid #000000; /* línea gruesa interior */
+    padding: 15px;
+    background-color: #FFFFFF;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase; /* todo en mayúsculas estilo Pokémon */
+}
+
+/* === CONTENEDOR GENERAL DE SETTINGS === */
+.settings-container {
+    display: flex;
+    flex-direction: column;   /* apila los cuadros uno encima del otro */
+    gap: 10px;                /* espacio entre cada cuadro */
+}
+
+/* cada cuadro individual (sin bordes, porque los pone pkm-menu-outer) */
+.settings-box {
+    width: 100%;
+}
+
+/* === OPCIONES EN FILA === */
+.options-row {
+    display: flex;            /* coloca opciones en horizontal */
+    justify-content: space-between;
+    gap: 5px;                 /* espacio entre opciones */
+}
+
+.options-row .option-item {
+    flex: 1;                  /* cada opción ocupa el mismo ancho */
+    text-align: center;
+    border-bottom: none;
+    padding-left: 10px;       /* reduce el margen izquierdo */
+}
+
+.options-row .option-item:not(:last-child) {
+    border-right: 1px solid #CCCCCC; /* línea separadora vertical */
+}
+
+/* === ESTILO DE LOS TÍTULOS PRINCIPALES === */
+.box-title {
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;          /* muestra la mano al pasar mouse */
+    display: flex;
+    align-items: center;
+    position: relative;       /* para posicionar triángulo */
+    background-color: #FFFFFF;
+    border-bottom: 2px solid #000000;
+    user-select: none;        /* evita selección de texto accidental */
+    transition: background-color 0.2s; /* suaviza hover */
+}
+
+.box-title:hover {
+    background-color: #f5f5f5; /* cambia al pasar el mouse */
+}
+
+/* triángulo que aparece al lado de los títulos */
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #000;
+    margin-right: 10px;
+    opacity: 0;               /* inicialmente invisible */
+    transition: opacity 0.2s;
+    position: absolute;
+    left: 10px;
+}
+
+.triangle.white {
+    border-top-color: #f6eeee; /* triángulo blanco cuando está activo */
+}
+
+.triangle.visible {
+    opacity: 1;
+}
+
+.box-title:hover .triangle:not(.white) {
+    opacity: 1;               /* triángulo negro al pasar mouse */
+}
+
+/* === ESTILO DE LAS OPCIONES === */
+.option-item {
+    padding: 10px 15px;
+    padding-left: 25px;       /* espacio para el triángulo al lado */
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: right;
+    user-select: none;
+    border-bottom: 1px solid #CCCCCC;
+    transition: background-color 0.2s;
+    background-color: #FFFFFF;
+    font-size: 13px;
+}
+
+.option-item:last-child {
+    border-bottom: none;      /* quita línea del último elemento */
+}
+
+.option-item:hover {
+    background-color: #EEEEEE; /* cambia color al pasar mouse */
+}
+
+/* triángulo pequeño para las opciones */
+.option-triangle {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #000;
+    margin-right: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    position: absolute;
+    left: 10px;
+}
+
+.option-item:hover .option-triangle {
+    opacity: 1;
+}
+
+/* === BOTÓN CANCEL === */
+#cancel-btn {
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    /* sin recuadro */
+    border: none;
+    color: #000;
+    text-align: center;
+    user-select: none;
+    transition: background-color 0.2s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#cancel-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.cancel-triangle {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #000;
+    margin-right: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    position: absolute;
+    left: 5px;
+}
+
+#cancel-btn:hover .cancel-triangle {
+    opacity: 1;
+}
