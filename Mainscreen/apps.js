@@ -28,23 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "./principalMenu.html";
     });
 
-<<<<<<< HEAD
-btnCancel.addEventListener('click', () => {
-    window.location.href = "./principalMenu.html";
+
 });
-const music = document.getElementById('titleMusic');
-music.volume = 0.7;
-music.play().catch(() => {
-  const resume = () => {
-    music.play();
-    document.removeEventListener('click', resume);
-    document.removeEventListener('keydown', resume);
-  };
-  document.addEventListener('click', resume);
-  document.addEventListener('keydown', resume);
-});
-/**/ 
-=======
-    /**/ 
-});
->>>>>>> b2503b4b7b1b9d090803b6ef93a11a5b07a0d6eb
