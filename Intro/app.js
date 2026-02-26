@@ -1,4 +1,5 @@
 
+document.addEventListener('DOMContentLoaded', () => {
 const pokemonSprites = [
   'assets/images/bulbasaur.png',
   'assets/images/charmander.png',
@@ -65,4 +66,6 @@ document.addEventListener('keydown', (e) => {
       window.location.href = '../Mainscreen/principalMenu.html';
     }, 300);
   }
+});
+
 });
