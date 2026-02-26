@@ -21,7 +21,14 @@
 
 <script>
 const music = document.getElementById('titleMusic');
+// restaurar tiempo previo si existe
+const saved = sessionStorage.getItem('bgmTime');
+if (saved !== null) {
+    music.currentTime = parseFloat(saved) || 0;
+}
+
 music.volume = 0.7;
+
 music.play().catch(() => {
   const resume = () => {
     music.play();
@@ -31,6 +38,11 @@ music.play().catch(() => {
   document.addEventListener('click', resume);
   document.addEventListener('keydown', resume);
 });
+
+// opcional: actualizar almacenamiento cada pocos segundos para tener sincronía
+setInterval(() => {
+    sessionStorage.setItem('bgmTime', music.currentTime);
+}, 3000);
 </script>
     <script src="apps.js"></script>
 </html>
