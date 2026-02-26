@@ -1,0 +1,124 @@
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      margin:0;
+      height:100vh;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      image-rendering:pixelated;
+      font-family: 'VT323', monospace;
+    }
+
+    .gameboy-screen {
+      width:640px;
+      height:576px;
+      background:#9ca0a4;
+      border:20px solid #222;
+      border-radius:16px;
+      box-shadow:0 0 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .screen-inner {
+      width:160px;
+      height:144px;
+      position:absolute;
+      inset:0;
+      margin:auto;
+      background:#ffffff;
+      transform:scale(4);
+      transform-origin:center center;
+      image-rendering:pixelated;
+      overflow: hidden;
+    }
+
+    .title-logo {
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: auto;
+      image-rendering: pixelated;
+      filter: grayscale(50%)
+    }
+
+    .trainer {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      top: 75px;
+      left: 62%;               
+      transform: translateX(-50%);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: grayscale(100%) brightness(0.85) contrast(1.7);
+      opacity: 0.95;
+      image-rendering: pixelated;
+    }
+
+    .pokemon-container {
+      position: absolute;
+      top: 75px;
+      left: 55%;            
+      width: 48px;
+      height: 48px;
+      transform: translateX(-120%); 
+         filter: grayscale(100%) brightness(1.20) contrast(1.7);
+    }
+
+    .pokemon {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: grayscale(100%) brightness(0.65) contrast(1.7);
+      image-rendering: pixelated;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .pokemon.slide-in {
+      animation: slideIn 0.6s forwards ease-out;
+    }
+
+    .pokemon.slide-out {
+      animation: slideOut 0.6s forwards ease-in;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(60px); }   
+      to   { transform: translateX(0); }
+    }
+
+    @keyframes slideOut {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-80px); }  
+    }
+
+    .press-start {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'VT323', monospace;
+      font-size: 13px;
+      color: #000;
+      text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+      animation: blink 1.4s infinite step-end;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }

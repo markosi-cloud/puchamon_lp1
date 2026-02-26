@@ -14,5 +14,15 @@ btnOptions.addEventListener('click', () => {
 btnCancel.addEventListener('click', () => {
     window.location.href = "./principalMenu.html";
 });
-
+const music = document.getElementById('titleMusic');
+music.volume = 0.7;
+music.play().catch(() => {
+  const resume = () => {
+    music.play();
+    document.removeEventListener('click', resume);
+    document.removeEventListener('keydown', resume);
+  };
+  document.addEventListener('click', resume);
+  document.addEventListener('keydown', resume);
+});
 /**/ 
